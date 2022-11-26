@@ -1,0 +1,140 @@
+//* Clase
+
+/* 
+? 1) Definir react:
+
+-Que es?
+
+-Como se usa?
+
+Virtual DOM: Virtual DOM el cual es una representación en memoria del estado del DOM, lo que permite determinar que partes del DOM han cambiado de manera rápida y actualizando y renderizando únicamente aquellos componentes que hayan cambiado. A este proceso se le conoce como reconciliación, en las primeras versiones de React, este proceso estaba orquestado por el algoritmo Stack Reconciler, en versiones nuevas se implementó un nuevo algoritmo de reconciliación llamado Fiber. 
+
+? 2) Instalar React:
+
+- Mostrar Documentacion
+- Realizar npx create-react-app my-app
+- Mostrar cada elemento de la base creada
+- Explicar el package.json 
+- Explicar que en la carpeta no en vs code se crea un archivo .git, el cual se refiere que ya no debemos ejecutar git init , ya que esta creado para nosotros, solo deberiamos unir nuestro github al proyecto.
+- Explicar  que pasa si tengo dos elementos en el return al mismo nivel
+- explicar como se exporta e importa en react
+- Explicar que es un componente
+- Explicar como llamar js en return {}
+- explicar Snipet  extension vs code es7 react (rafce)
+
+? 3) Props:
+
+Las props son los atributos que recibe un componente cuando se escribe por medio de JSX y a las cuales el componente tiene acceso para poder inicializarlo, se puede decir que las props son el estado inicial del componente, esto quiere decir que se puede pasar propiedades entre componentes dentro de componentes y hacia otros componentes, ya que la composición otorga esta flexibilidad.
+
+function BienvenidoFuncional(props) {
+    return (<h1>Hola, {props.nombre}</h1>);
+}
+
+// Componente de clase, las props forman parte del objeto en sí.
+class BienvenidoClase extends React.Component {
+    render() {
+    return <h1>Hola, {this.props.nombre}</h1>;
+    }
+}
+
+// Una aplicación de React usa un único componente App para renderizar
+// toda la aplicación, desde donde se montan todos los demás componentes
+function App() {
+// Las props se inicializan por medio de los atributos del componente
+// Los dos tipos de componentes son válidos y React los renderiza igual
+    return (
+        <div>
+            <BienvenidoFuncional nombre="Armando" />
+            <BienvenidoClase nombre="Celina" />
+            <BienvenidoFuncional nombre="Luis" />
+            <BienvenidoClase nombre="Sofia" />
+        </div>
+    );
+}
+
+// Se renderiza la aplicación sobre el elemento con `id="root"`
+    ReactDOM.render(
+    <App />,
+    document.getElementById('root')
+);
+
+? 3) State:
+
+El estado de un componente es similar a las props, pero en lugar de que el estado sea transferido al componente, el estado es privado y no es inmutable, por lo que un componente puede cambiar su estado dependiendo de las interacciones y funcionalidades internas del componente, por lo que es el mismo componente el que se encarga de manejar su propio estado.
+
+Al final, el estado es la representación de los datos de un componente en un tiempo determinado, estos datos son mutables y pueden cambiar durante el uso de la aplicación. El estado no es obligatorio, lo que da pie a que existan Stateful Components (componentes con estado) y Stateless Components (componentes sin estado).
+
+Para poder asignar un estado a un componente, se asigna como cualquier otro atributo dentro de la clase, en el constructor usando un this.state, el cual va a guardar el estado del componente y se le puede asignar cualquier valor necesario para que el componente realice su funcionalidad. Al usar React un paradigma funcional para el manejo de los atributos de los componentes, no se puede modificar el estado directamente, la única vez que se asigna es en el constructor, pero cualquier otra modificación que se requiera hacer sobre el estado, se debe realizar usando el método especial setState, el cual forma parte de react y es encargado de realizar y manejar de manera adecuada las actualizaciones de estado al estar internamente ligado al algoritmo de reconciliación que realiza el renderizado del DOM.
+
+/ Creamos un componente funcional sin estado
+     function FechaEnFormato(props) {
+       return <h2>La fecha y hora actual es: {props.fecha.toUTCString()}.</h2>;
+     }
+
+     / Creamos un componente de clase con estado
+     class Reloj extends React.Component {
+       constructor(props) {
+         super(props);
+         / Asignamos el estado inicial del componente
+         this.state = {
+           fecha: new Date()
+         };        
+         / Actualizamos el estado cada segundo
+         setInterval(
+           () => this.setState({ fecha: new Date() }),
+           1000
+         );
+       }
+       / Mostramos la fecha y la hora actuales
+       / lo cual está enlazado al estado del componente.
+       / El estado de un componente puede pasarse
+       / como prop a otro componente.
+       render() {
+         return (
+           <div>
+             <FechaEnFormato fecha={this.state.fecha} />
+           </div>
+         );
+       }
+     }
+     
+     / Se renderiza el componente sobre el elemento con `id="root"`
+     ReactDOM.render(
+       <Reloj />,
+       document.getElementById('root')
+     );
+
+ !-Virtual DOM: Cada vez que un componente se re renderiza  compara el dom con el domvirtual y solo cambia el elemento rerenderizado
+
+? 4) Operador ternario
+
+ -Explicar como funciona el operador ternario
+
+? 5)React Boostrap
+
+ -Explicar como funciona react bootstrap y bootsrap normal en react
+
+ -Importar boostrap en index.js
+
+? 6) Componentes con Clases
+
+- Mostrar Sintaxis ARCHIVO C-CLASES
+- Explicar como funcionan las props en clases --> this.props.name
+- Explicar como recorrer un array y mandar props con clase
+- Volver al state del reloj y hacerlo con clase
+  * Explicar por que va el constructor y el super, y porque dentro de el va las props(pasamos propiedades al constructor y la usamos en fechaEnFormato) 
+
+? 6.1) Cilco de vida de un componente
+- Constructor()
+- Render()
+- El método componentDidMount() se ejecuta después que la salida del componente ha sido renderizada en el DOM
+- ComponentWillUnMount()
+
+? 7) Error Boundaries
+ Mostrar info desde doc de react y ejemplo de codePain
+
+
+
+
+
+*/
