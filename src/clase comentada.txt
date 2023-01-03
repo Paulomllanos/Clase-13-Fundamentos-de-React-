@@ -21,6 +21,9 @@ Virtual DOM: Virtual DOM el cual es una representación en memoria del estado de
 - Explicar que es un componente
 - Explicar como llamar js en return {}
 - explicar Snipet  extension vs code es7 react (rafce)
+- Explicar que es JSX? Es una extension de ES6 que permite escribir html en JS y permite crear componentes en React 
+- Explicar array en react
+- Explicar como funciona un operador ternario
 
 ? 3) Props:
 
